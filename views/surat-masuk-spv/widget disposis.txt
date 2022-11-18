@@ -1,0 +1,13 @@
+<div class="col-md-12">
+                    <?= $form->field($model, 'disposisi')->widget(Select2::classname(), [
+                            'data' => ["red" => "red", "blue" => "blue"],
+                            'options' => ['placeholder' => 'Pilih Pejabat Disposisi ...', 'multiple' => true],
+                            'pluginOptions' => [
+                                'tags' => true,
+                                'tokenSeparators' => [',', ' '],
+                                'maximumInputLength' => 10
+                            ],
+                        ])->label('Disposisi'); ?>
+
+                    <?= $form->field($model, 'disposisi')->textArea(['maxlength' => true])->label($model->getAttributeLabel('disposisi')); ?>
+                </div>
