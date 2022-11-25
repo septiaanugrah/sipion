@@ -60,16 +60,14 @@ class SuratMasukController extends Controller
     public function actionView($id)
     {
         $model= $this->findModel($id);
-        $data_jabatan = \app\models\Jabatan::dataJabatanId();
     if ($model->load(Yii::$app->request->post())) {
-            $model->save();
+            $model->save(false);
             Yii::$app->session->setFlash( 'kv-detail-success', 'Berhasil Diubah');
             return $this->redirect( ['view', 'id' => $model->id]);
         }
         
         return $this->render('view', [
             'model' => $model,
-            'data_jabatan' => $data_jabatan,
         ]);
     }
 
@@ -89,9 +87,9 @@ class SuratMasukController extends Controller
             $model->file = UploadedFile::getInstance($model, 'file');
             $model->save();
                 if ($model->file) {                
-                    $model->file->saveAs('uploads/surat-masuk/' . Yii::$app->controller->id . '-' . $model->id . '.' . 'pdf');
+                    $model->file->saveAs('uploads/dokumen/' . 'dokumen' . '-' . $model->id . '.' . 'pdf');
                 }
-            Yii::$app->session->setFlash('success', 'Berhasil Disimpan </br></br> Nomor Surat: <h3>' . $model->kode_surat . '</h3>');
+            Yii::$app->session->setFlash('success', 'Buku Berhasil Disimpan');
             return $this->redirect('index');
         }
 
@@ -122,8 +120,8 @@ class SuratMasukController extends Controller
             // exit();
             // $download = SuratMasuk::findOne($id); 
             // $model->file = UploadedFile::getInstance($model, 'file');
-            $path = Yii::getAlias('@webroot').'/uploads/surat-masuk/' . Yii::$app->controller->id . '-' . $id . '.' . 'pdf';
-            $fileName = Yii::$app->controller->id . '-' . $id . '.' . 'pdf';
+            $path = Yii::getAlias('@webroot').'/uploads/dokumen/' . 'dokumen' . '-' . $id . '.' . 'pdf';
+            $fileName = 'dokumen' . '-' . $id . '.' . 'pdf';
 
             if (file_exists($path)) {
                 // return Yii::$app->response->sendFile($path);
@@ -151,7 +149,7 @@ class SuratMasukController extends Controller
             $model->file = UploadedFile::getInstance($model, 'file');
             $model->save(); 
             if ($model->file && $model->validate()) {                
-                $model->file->saveAs('uploads/surat-masuk/' . Yii::$app->controller->id . '-' . $model->id . '.' . 'pdf');
+                $model->file->saveAs('uploads/dokumen/' . 'dokumen' . '-' . $model->id . '.' . 'pdf');
             }
             Yii::$app->session->setFlash('success', 'Berhasil Diunggah Ulang');
             return $this->redirect(['view', 'id' => $model->id]);
@@ -169,47 +167,19 @@ class SuratMasukController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    // public function actionDelete($id)
-    // {
-    //     $model = $this->findModel($id);
-    //     $model->alamat_pengirim="";
-    //     $model->perihal="";
-    //     $model->kode_surat="";
-    //     $model->disposisi_1=0;
-    //     $model->disposisi_2=0;
-    //     $model->disposisi_lainnya="";
-    //     $model->keterangan="";
-    //     $model->status="";
-    //     $model->tanggal=date('Y-m-d');
-    //     $model->ketersediaan=1;
 
-    //     $model = $this->findModel($id);
-    //     $files = FileHelper::findFiles('uploads/surat-masuk/', [
-    //         'only' => [Yii::$app->controller->id . '-' . $model->id . '.' . 'pdf'],
-    //     ]);
-        
-    //     if($files)
-    //     {
-    //     unlink('uploads/surat-masuk/' . Yii::$app->controller->id . '-' . $model->id . '.' . 'pdf');
-    //     }
-
-    //     $model->save(); 
-
-    //     Yii::$app->session->setFlash('info', 'Data Berhasil Dikosongkan');
-    //     return $this->redirect(['view', 'id' => $model->id]);
-    // }
 
     public function actionDelete($id)
     {
 
         $model = $this->findModel($id);
-        $files = FileHelper::findFiles('uploads/surat-masuk/', [
+        $files = FileHelper::findFiles('uploads/dokumen/', [
             'only' => [Yii::$app->controller->id . '-' . $model->id . '.' . 'pdf'],
         ]);
         
         if($files)
         {
-        unlink('uploads/surat-masuk/' . Yii::$app->controller->id . '-' . $model->id . '.' . 'pdf');
+        unlink('uploads/dokumen/' . 'dokumen' . '-' . $model->id . '.' . 'pdf');
         }
 
         $model->save(); 

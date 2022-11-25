@@ -38,7 +38,7 @@ use kartik\datecontrol\DateControl;
                 <div class="col-md-12">
 
                     <?php
-                    echo '<label class="control-label">Unggah Hasil Scan Surat Masuk (.PDF)</label>';
+                    echo '<label class="control-label">Unggah Dokumen(.PDF)</label>';
                     echo $form->field($model, 'file')->widget(FileInput::classname(), [
                         'pluginOptions' => [
                             'showPreview' => true,

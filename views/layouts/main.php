@@ -55,7 +55,7 @@ use kartik\icons\Icon;
     <link rel="icon" type="image/jpg" href="<?= Yii::getAlias('@web')?>/img/letter.png">
 </head>
 
-<body class="hold-transition skin-red sidebar-mini">
+<body class="hold-transition skin-yellow sidebar-mini">
 <?php $this->beginBody() ?>
 
 <div class="wrapper">

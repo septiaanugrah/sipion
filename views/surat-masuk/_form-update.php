@@ -101,7 +101,7 @@ use kartik\select2\Select2;
                 <div class="col-md-12">
 
                     <?php
-                    echo '<label class="control-label">Unggah Ulang Hasil Scan Surat Masuk (.PDF)</label>';
+                    echo '<label class="control-label">Unggah Ulang Dokumen(.PDF)</label>';
                     echo $form->field($model, 'file')->widget(FileInput::classname(), [
                         'pluginOptions' => [
                             'showPreview' => true,

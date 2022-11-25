@@ -75,12 +75,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'format' => 'html',
                     'value' => '<kbd>' . $model->kode_surat . '</kbd>',
                     'displayOnly' => false,
+                    'valueColOptions' => ['style' => 'width:30%'],
                 ],
                 [
                     'attribute' => 'alamat_pengirim',
                     'format' => 'html',
                     'value' => $model->alamat_pengirim,
                     'displayOnly' => false,
+                    'valueColOptions' => ['style' => 'width:30%'],
                 ],
             ]
         ],
@@ -93,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'type' => DetailView::INPUT_TEXTAREA,
                     'value' => $model->perihal,
                     'displayOnly' => false,
-                    'valueColOptions' => ['style' => 'width:40%'],
+                    'valueColOptions' => ['style' => 'width:30%'],
                 ],
                 [
                     'attribute' => 'keterangan',
@@ -101,7 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'type' => DetailView::INPUT_TEXTAREA,
                     'value' => $model->keterangan,
                     'displayOnly' => false,
-                    'valueColOptions' => ['style' => 'width:40%'],
+                    'valueColOptions' => ['style' => 'width:30%'],
                 ],
             ]  
         ],
@@ -153,7 +155,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'striped' => false,
         'hover' => false,
-        'mode' => DetailView::MODE_EDIT,
+        'mode' => DetailView::MODE_VIEW,
         'vAlign' => DetailView::ALIGN_MIDDLE,
         'hAlign' => DetailView::ALIGN_CENTER,
         'panel' => [
